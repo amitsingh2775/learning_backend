@@ -8,7 +8,7 @@ const ConnectDB=require('./utils/db')
 dotenv.config();
 
 const app = express();
-app.use(cors({origin:"http://localhost:5173"}));
+app.use(cors({origin:"https://learning-frontend-ebon.vercel.app"}));
 app.use(express.json());
 
 app.use('/api/progress', progressRoutes);
