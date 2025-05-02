@@ -8,14 +8,18 @@ const ConnectDB=require('./utils/db')
 dotenv.config();
 
 const app = express();
-app.use(cors({origin:"https://learning-frontend-ebon.vercel.app"}));
+app.use(cors({origin:"https://learning-frontend-ebon.vercel.app", credentials: true}));
 app.use(express.json());
 
 app.use('/api/progress', progressRoutes);
 
 
 
- app.listen(process.env.PORT, () => {
-      ConnectDB()
-      console.log(`Server running on port ${process.env.PORT}`);
- });
+ConnectDB().then(() => {
+  app.listen(process.env.PORT, () => {
+    console.log(`Server running on port ${process.env.PORT}`);
+  });
+}).catch((err) => {
+  console.error('Database connection failed', err);
+});
+
