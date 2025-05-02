@@ -22,7 +22,12 @@ We use React state to store all intervals the user watched:
 ```js
 const [watchedIntervals, setWatchedIntervals] = useState([]);
 
+
+
 When the video is paused, a new interval from startTime to currentTime is pushed into the array:
+
+
+
 
 ```js
 const newInterval = [startTime, playerRef.current.getCurrentTime()];
